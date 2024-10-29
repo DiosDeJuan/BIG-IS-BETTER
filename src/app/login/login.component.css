@@ -1,0 +1,70 @@
+/* Estilos del contenedor general */
+.login-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Sección izquierda para el logo */
+  .logo-section {
+    width: 50%;
+    background-color: #b30000; /* Color rojo del fondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo {
+    max-width: 70%;
+  }
+  
+  /* Sección derecha para el formulario */
+  .form-section {
+    width: 50%;
+    background-color: #ff007f; /* Color rosado de fondo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  /* Campos de entrada */
+  .input-field {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Grupo de botones */
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+  
+  /* Botón de recuperación de contraseña */
+  .recover-btn {
+    background-color: transparent;
+    color: #b30000;
+    border: 1px solid #b30000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Botón de ingreso */
+  .login-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
