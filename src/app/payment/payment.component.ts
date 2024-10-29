@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { StripeService } from '../services/stripe.service';
-import { HttpClientModule } from '@angular/common/http';
-
+// payment.component.ts
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { StripeService, StripeCardComponent } from 'ngx-stripe';
+import { StripeCardElementOptions, StripeElementsOptions, Token, StripeCardElementChangeEvent } from '@stripe/stripe-js';
+import { environment } from '../../environments/environment'; // Asegúrate de tener configurado el entorno
 
 @Component({
   selector: 'app-payment',
@@ -9,39 +11,63 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  constructor(private stripeService: StripeService) {}
+  @ViewChild('card', { static: false }) card: StripeCardComponent;
+  @ViewChild('cardErrors', { static: false }) cardErrors: ElementRef;
 
-  ngOnInit(): void {
-    this.setupStripe();
+  cardOptions: StripeCardElementOptions = {
+    style: {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        lineHeight: '40px',
+        fontWeight: 300,
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '18px',
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      }
+    }
+  };
+
+  elementsOptions: StripeElementsOptions = {
+    locale: 'en'
+  };
+
+  constructor(private stripeService: StripeService, private http: HttpClient) {}
+
+  ngOnInit() {
+    // No es necesario llamar a setupStripe aquí ya que ngx-stripe maneja la inicialización
   }
 
-  async setupStripe() {
-    const stripe = this.stripeService.getStripe();
-    if (!stripe) {
-      console.error('Stripe no se ha inicializado');
-      return;
-    }
+  async onSubmit() {
+    // Crear el token de Stripe utilizando ngx-stripe
+    const { token, error } = await this.stripeService.createToken(this.card.element);
 
-    const elements = stripe.elements();
-    const card = elements.create('card');
-    card.mount('#card-element');
-
-    const form = document.getElementById('payment-form');
-    if (form) {
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const { token, error } = await stripe.createToken(card);
-
-        if (error) {
-          console.error('Error al crear el token', error);
-        } else {
-          console.log('Token creado:', token);
-          // Enviar el token al servidor para procesar el pago
-        }
-      });
+    if (error) {
+      // Mostrar error al usuario
+      if (this.cardErrors && this.cardErrors.nativeElement) {
+        this.cardErrors.nativeElement.textContent = error.message;
+      }
+      console.error('Error al crear el token:', error);
     } else {
-      console.error("No se encontró el elemento con ID 'payment-form'");
+      // Enviar el token al servidor
+      console.log('Token creado:', token);
+      this.processPayment(token);
     }
+  }
+
+  processPayment(token: Token) {
+    this.http.post(`${environment.apiUrl}/charge`, { token: token.id })
+      .subscribe(
+        response => {
+          console.log('Pago realizado:', response);
+          // Manejar acciones posteriores al pago, como mostrar un mensaje de éxito
+        },
+        error => {
+          console.error('Error al procesar el pago:', error);
+          // Manejar errores, como mostrar un mensaje de error al usuario
+        }
+      );
   }
 }
-
