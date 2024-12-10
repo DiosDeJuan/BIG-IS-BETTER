@@ -1,0 +1,60 @@
+<div class="admin-container">
+  <h2 class="admin-title">Administrar Productos</h2>
+
+  <!-- Formulario para Crear/Editar Productos -->
+  <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="product-form">
+    <input type="hidden" formControlName="id" />
+    <div class="form-group">
+      <label>Nombre:</label>
+      <input type="text" formControlName="nombre" required />
+    </div>
+    <div class="form-group">
+      <label>Descripción:</label>
+      <textarea formControlName="descripcion" required></textarea>
+    </div>
+    <div class="form-group">
+      <label>Precio:</label>
+      <input type="number" formControlName="precio" required />
+    </div>
+    <div class="form-group">
+      <label>Imagen URL:</label>
+      <input type="text" formControlName="imagenURL" required />
+    </div>
+    <button type="submit" class="form-button">
+      {{ editing ? 'Actualizar Producto' : 'Crear Producto' }}
+    </button>
+  </form>
+
+  <!-- Lista de Productos -->
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.nombre }}</td>
+        <td>{{ product.descripcion }}</td>
+        <td>{{ product.precio }}</td>
+        <td>
+          <img
+            [src]="product.imagenURL"
+            alt="{{ product.nombre }}"
+            class="product-image"
+          />
+        </td>
+        <td>
+          <button class="action-button edit-button" (click)="editProduct(product)">Editar</button>
+          <button class="action-button delete-button" (click)="deleteProduct(product.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

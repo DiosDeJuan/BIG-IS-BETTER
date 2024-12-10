@@ -1,0 +1,135 @@
+/* General Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #b30000, #82074a);
+    padding: 10px 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo-container a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  .logo-container img {
+    max-height: 60px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .logo-container img:hover {
+    transform: scale(1.1);
+  }
+  
+  .logo-text {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    color: #fcd462;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  
+  .logo-text .home-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .logo-text .home-link:hover {
+    color: #ffd700;
+    text-shadow: 3px 3px 10px rgba(255, 215, 0, 1);
+  }
+  @keyframes glow {
+    from {
+      text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.5);
+    }
+    to {
+      text-shadow: 2px 2px 20px rgba(255, 215, 0, 1);
+    }
+  }
+  
+  /* Search Bar Section */
+  .search-container {
+    flex: 2;
+    text-align: center;
+  }
+  
+  .search-bar {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    background-color: white;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .search-bar:focus {
+    border: 2px solid #fcd462;
+    box-shadow: 0 0 12px #fcd462;
+  }
+  
+  /* Navigation Links Section */
+  .nav-links {
+    flex: 3;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #fcd462;
+  }
+  
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #fcd462;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  /* Login Link */
+  .login-link {
+    padding: 8px 20px;
+    background: linear-gradient(45deg, #fcd462, #ffd700);
+    border-radius: 20px;
+    color: #b30000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .login-link:hover {
+    background: linear-gradient(45deg, #ffd700, #fcd462);
+    color: white;
+    transform: scale(1.1);
+  }
+  

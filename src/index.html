@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html {
+        --s: 80px; /* control the size */
+        --c: #542437;
+        --_g: 
+          #0000 calc(-650%/13) calc(50%/13), var(--c) 0 calc(100%/13),
+          #886c6c00 0 calc(150%/13), var(--c) 0 calc(200%/13),
+          #0000 0 calc(250%/13), var(--c) 0 calc(300%/13);
+        --_g0: repeating-linear-gradient(45deg, var(--_g));
+        --_g1: repeating-linear-gradient(-45deg, var(--_g));
+        background:
+          var(--_g0), var(--_g0) var(--s) var(--s),
+          var(--_g1), var(--_g1) var(--s) var(--s) #C02942;
+        background-size: calc(2 * var(--s)) calc(2 * var(--s));
+      }
+    </style>
+    <meta charset="utf-8" />
+    <title>BIG-IS-BETTER</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

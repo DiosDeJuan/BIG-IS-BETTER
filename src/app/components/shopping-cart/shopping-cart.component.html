@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <ul class="listaNav">
+    <li><a class="opcion" routerLink="/catalogo">Catalogo</a></li>
+    <li><a class="opcion" routerLink="/pedidos">Pedidos</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
+
+<div class="container">
+  <div *ngIf="products.length === 0" class="vacio">
+    <p>Tu carrito está vacío</p>
+    <img src="../../../assets/vacio.png" alt="Carrito vacío" />
+  </div>
+  <div>
+    <div *ngFor="let product of products" class="productos">
+      <img src="{{ product.imagenURL }}" alt="Imagen Producto" />
+      <div class="contenido">
+        <h2>{{ product.nombre }}</h2>
+        <p>{{ product.descripcion }}</p>
+        <p>{{ product.precio | currency:'MXN' }}</p>
+        <button (click)="removeFromCart(product.id)">Remover</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pago">
+    <p>Total: {{ total | currency:'MXN' }}</p>
+    <div #paypalButtonContainer></div> <!-- Contenedor para el botón de PayPal -->
+  </div>
+</div>

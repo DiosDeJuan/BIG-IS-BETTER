@@ -1,0 +1,125 @@
+/* Barra de navegación */
+.navbar {
+  background: linear-gradient(145deg, #e74c3c, #c0392b); /* Degradado rojo */
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.listaNav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.listaNav li {
+  margin: 0 20px;
+}
+
+.opcion {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.opcion:hover {
+  color: #f1c40f; /* Amarillo vibrante */
+}
+
+.opcion.active {
+  color: #f1c40f; /* Amarillo vibrante para el enlace activo */
+}
+
+/* Contenedor de la cuadrícula */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 30px; /* Espacio entre productos */
+  max-width: 1200px;
+  margin: 50px auto; /* Centrar y dar espacio superior */
+  padding: 20px;
+}
+
+/* Contenedor de cada producto */
+.productContainer {
+  background: linear-gradient(145deg, #ffffff, #f7f7f7); /* Fondo sutil con sombra */
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.productContainer:hover {
+  transform: translateY(-5px); /* Efecto de elevación */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen del producto */
+.imagenProducto {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Nombre del producto */
+.nombreProducto {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #2c3e50; /* Gris oscuro */
+}
+
+/* Descripción del producto */
+.descripcionProducto {
+  font-size: 0.9em;
+  color: #7f8c8d; /* Gris claro */
+  margin-bottom: 10px;
+}
+
+/* Precio del producto */
+.precioProducto {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #e74c3c; /* Rojo intenso */
+  margin-bottom: 15px;
+}
+
+/* Botón */
+.button {
+  background: linear-gradient(145deg, #3498db, #2980b9); /* Azul degradado */
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background: linear-gradient(145deg, #2980b9, #1c6398); /* Azul más oscuro */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .gridContainer {
+    grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas pequeñas */
+  }
+}
